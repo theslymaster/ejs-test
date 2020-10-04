@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script id="template" type="text/template">
+        <% if (names.length) { %>
+            <ul>
+                <% names.foreach((name) => { %>
+                    <li><%= name %></li>
+                <% }); %>
+            </ul>
+        <% } %>
+    </script>
+    <script>
+        onload = () => {
+            var template = document.getElementById("template").innerHTML;
+            console.log("EJS Template:");
+            console.log(template);
+
+            var data = {names: ['loki', 'tobi', 'jane']};
+            var html = ejs.compile(template)(data);
+            console.log('Rendered Template:');
+            console.log(html);
+
+            document.body.innerHTML = html;
+            console.log('HTML injected into <body>');
+        };
+    </script>
+</head>
+<body>
+</body>
+</html>
